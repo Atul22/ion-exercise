@@ -1,7 +1,6 @@
-Login/Logout Workflow
+#Login/Logout Workflow
 
-
-DESCRIPTION: 
+## DESCRIPTION: 
 This is a Login logout workflow application which contains 
 1. A welcome view
 2. A login view (form)
@@ -14,23 +13,25 @@ Server returns an object in response showing the succesful/failed login message.
 which is json-web-token(jwt). 
 
 
-INSTALLATION:
+## INSTALLATION:
 
 Please use the same versions of dependecies as specified in package.json.
 
 Using npm, install the required node_modules
 From root directory
 Step#1:
+```bash
 cd frontend-react
 npm i
-
+```
 Step#2
+```bash
 cd backend-node
 npm i
+```
+## USAGE:
 
-USAGE:
-
-Important:
+## Important:
 Make sure port 3900 is free on the running machine, server runs on port 3900 and client makes call to the same endpoint.
 If port is not available make the follwoing changes
 
