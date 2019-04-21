@@ -54,6 +54,15 @@ npm start
 ```
 
 ## Notes:
-Development machine uses following versions:
-node: 10.15.1
-npm: 6.4.1
+Some mock-users:  
+username      password  
+gatsby        12345  
+dark_knight   12345  
+jon_snow      12345  
+thor          12345  
+mesut_ozil    12345  
+joker         12345  
+
+Development machine uses following versions:  
+node: 10.15.1  
+npm: 6.4.1  
