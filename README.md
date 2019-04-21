@@ -54,14 +54,13 @@ npm start
 ```
 
 ## Notes:
-Some mock-users:  
-username      password  
-gatsby        12345  
-dark_knight   12345  
-jon_snow      12345  
-thor          12345  
-mesut_ozil    12345  
-joker         12345  
+Some mock-users:    
+username: gatsby        password: 12345  
+username: dark_knight   password: 12345  
+username: jon_snow      password: 12345  
+username: thor          password: 12345  
+username: mesut_ozil    password: 12345  
+username: joker         password: 12345  
 
 Development machine uses following versions:  
 node: 10.15.1  
