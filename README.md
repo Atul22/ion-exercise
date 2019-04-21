@@ -1,4 +1,4 @@
-#Login/Logout Workflow
+# Login/Logout Workflow
 
 ## DESCRIPTION: 
 This is a Login logout workflow application which contains 
@@ -36,18 +36,26 @@ Make sure port 3900 is free on the running machine, server runs on port 3900 and
 If port is not available make the follwoing changes
 
 Server (backend-node):
-index.js, change the value of PORT variable
-
+change the value of PORT variable
+``` bash
+index.js
+```
 Client (frontend-react):
-update the apiEndpoint in src/config.json.
-
+update the apiEndpoint
+``` bash
+src/config.json.
+```
 Steps
 1. Start backend server, run the following command from backend-node directory
+``` bash
 node index.js
-
+```
 2. Start client client server, run the following command from frontend-react directory
+``` bash
 npm start
+```
 
-Notes:
-Development machine uses following node version
-10.15.1
+## Notes:
+Development machine uses following versions:
+node: 10.15.1
+npm: 6.4.1
