@@ -8,9 +8,7 @@ This is a Login logout workflow application which contains
 
 It uses React.js on the client side and Node.js on the server side. 
 We expose an API endpoint using express framework for login actions.
-Client makes a call to the api endpoint which is served with a hardcoded delay of 3 seconds to accomodate async workflow. 
-Server returns an object in response showing the succesful/failed login message. Successful login messages contain an extra item
-which is json-web-token(jwt). 
+Client makes a call to the api endpoint. 
 
 
 ## INSTALLATION:
