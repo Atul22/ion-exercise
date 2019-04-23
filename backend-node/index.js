@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const config = require("config");
 const auth = require("./routes/auth");
 
 const app = express();
@@ -15,7 +16,7 @@ app.use(cors());
  */
 app.use("/api/auth", auth);
 
-const PORT = 3900;
+const PORT = config.get("PORT");
 const server = app.listen(PORT, () => {
   console.log(`Listening on Port ${PORT}`);
 });

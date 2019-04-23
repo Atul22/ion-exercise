@@ -29,30 +29,17 @@ npm i
 ```
 ## USAGE:
 
-## Important:
-Make sure port 3900 is free on the running machine, server runs on port 3900 and client makes call to the same endpoint.
-If port is not available make the follwoing changes
-
-Server (backend-node):
-change the value of PORT variable
-``` bash
-index.js
-```
-Client (frontend-react):
-update the apiEndpoint
-``` bash
-src/config.json.
-```
 Steps
 1. Start backend server, run the following command from backend-node directory
 ``` bash
-node index.js
+REACT_APP_PORT=9923 node index.js
 ```
 2. Start client client server, run the following command from frontend-react directory
 ``` bash
-npm start
+REACT_APP_PORT=9923 npm start
 ```
 
+If you don't set the port, it will try to pick 3900 as default port
 ## Notes:
 Some mock-users:    
 username: gatsby`      `password: 12345  

@@ -1,6 +1,8 @@
 import http from "./httpService";
 import jwtDecode from "jwt-decode";
-import { apiEndPoint } from "../config.json";
+
+const PORT = process.env.REACT_APP_PORT || 3900;
+const apiEndPoint = `http://localhost:${PORT}/api/auth`;
 
 const tokenKey = "token";
 
