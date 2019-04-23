@@ -29,17 +29,19 @@ npm i
 ```
 ## USAGE:
 
-Steps
-1. Start backend server, run the following command from backend-node directory
+Step#1
+
 ``` bash
+cd backend-node
 REACT_APP_PORT=9923 node index.js
 ```
-2. Start client client server, run the following command from frontend-react directory
+Step#2
 ``` bash
+cd frontend-react
 REACT_APP_PORT=9923 npm start
 ```
 
-If you don't set the port, it will try to pick 3900 as default port
+Default port is 3900
 ## Notes:
 Some mock-users:    
 username: gatsby`      `password: 12345  
