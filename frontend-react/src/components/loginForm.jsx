@@ -1,9 +1,19 @@
 import React, { Component } from "react";
 import { toast } from "react-toastify";
-import { Redirect, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Joi from "joi-browser";
+import { withStyles } from "@material-ui/core/styles";
+import FormControl from "@material-ui/core/FormControl";
+import Button from "@material-ui/core/Button";
+import { unstable_Box as Box } from "@material-ui/core/Box";
 import auth from "../services/authService";
-import Input from "./common/input";
+import Input from './common/input';
+
+const styles = theme => ({
+  margin: {
+    margin: theme.spacing.unit
+  }
+});
 
 class LoginForm extends Component {
   state = {
@@ -25,7 +35,7 @@ class LoginForm extends Component {
       .min(3)
       .error(
         new Error(
-          "Username should be of min length of 3 and _ is the only special character allowed"
+          "min 3 characters, only _ allowed"
         )
       ),
 
@@ -35,7 +45,7 @@ class LoginForm extends Component {
       .min(3)
       .error(
         new Error(
-          "Password should be of min length of 3 and _ is the only special character allowed"
+          "min 3 characters, only _ allowed"
         )
       )
   };
@@ -68,12 +78,12 @@ class LoginForm extends Component {
    * controlled usage of input
    * callback for onChange
    */
+
   handleInput = ({ currentTarget: input }) => {
     const { name, value } = input;
     const errors = { ...this.state.errors };
 
     const errorMessage = this.validateInput(input);
-
     if (errorMessage) errors[name] = errorMessage;
     else delete errors[name];
 
@@ -82,11 +92,7 @@ class LoginForm extends Component {
     this.setState({ data, errors });
   };
 
-  /**
-   * for submission callback
-   * launch login actions
-   */
-  _onSubmit = async e => {
+  handleClick = async e => {
     try {
       const { data } = this.state;
       e.preventDefault();
@@ -106,49 +112,73 @@ class LoginForm extends Component {
   };
 
   render() {
-    const { data, errors, hideCancel } = this.state;
-    /**
-     * only logged out users can access the login form
-     */
-    if (auth.getCurrentUser()) return <Redirect to="/" />;
-
+    const { classes } = this.props;
+    const { data, errors } = this.state;
     return (
-      <div>
-        <form onSubmit={this._onSubmit}>
+      <div
+        style={{
+          position: "absolute",
+          left: "50%",
+          top: "50%",
+          transform: "translate(-50%, -50%)"
+        }}
+      >
+        <FormControl className={classes.margin}>
+
+          <span style={{ textAlign: "center", fontSize: 25 }}>Sign in</span>
+
+          <Box m={2} />
+
           <Input
-            type="text"
             name="username"
-            value={data.username}
             label="Username"
+            type="text"
+            value={data.username}
             onChange={this.handleInput}
-            error={errors.username}
+            error= {errors.username}
+            helperText={errors.username}
+            className={classes.margin}
           />
 
+          <Box m={1} />
+ 
           <Input
-            type="password"
             name="password"
-            value={data.password}
             label="Password"
+            type="password"
+            value={data.password}
             onChange={this.handleInput}
             error={errors.password}
+            helperText={errors.password}
+            className={classes.margin}
           />
-          <button
+
+          <Box m={2} />
+ 
+          <Button
+            variant="contained"
+            color="secondary"
             disabled={this.validate()}
-            type="submit"
-            className="btn btn-primary"
+            onClick={this.handleClick}
+            className={classes.button}
           >
             Login
-          </button>
+          </Button>
 
-          {!hideCancel && (
-            <NavLink to="/" className="btn btn-link">
-              Cancel
-            </NavLink>
-          )}
-        </form>
+          <NavLink
+            to="/"
+            style={{
+              color: "inherit",
+              textDecoration: "none",
+              textAlign: "center"
+            }}
+          >
+            <Button color="secondary">Cancel</Button>
+          </NavLink>
+        </FormControl>
       </div>
     );
   }
 }
 
-export default LoginForm;
+export default withStyles(styles)(LoginForm);

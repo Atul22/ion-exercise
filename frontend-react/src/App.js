@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Switch, Redirect, Route } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import auth from "./services/authService";
-import NavBar from "./components/navBar";
+import NavBar from "./components/appBar";
 import Home from "./components/home";
 import LoginForm from "./components/loginForm";
 import Me from "./components/me";

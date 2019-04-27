@@ -1,12 +1,25 @@
 import React from "react";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import TextField from "@material-ui/core/TextField";
+import AccountCircle from "@material-ui/icons/AccountCircle";
 
-const Input = ({ label, name, error, ...rest }) => {
+const Input = ({ label, name, ...rest }) => {
   return (
-    <div className="form-group">
-      <label htmlFor={name}>{label}</label>
-      <input name={name} id={name} {...rest} className="form-control" />
-      {error && <div className="alert alert-danger">{error}</div>}
-    </div>
+    <React.Fragment>
+      <TextField
+            id={name}
+            name={name}
+            label={label}
+            {...rest}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <AccountCircle />
+                </InputAdornment>
+              )
+            }}
+          />
+    </React.Fragment>
   );
 };
 
