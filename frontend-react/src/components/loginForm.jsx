@@ -1,13 +1,13 @@
 import React, { Component } from "react";
+import Joi from "joi-browser";
 import { toast } from "react-toastify";
 import { NavLink } from "react-router-dom";
-import Joi from "joi-browser";
+import { unstable_Box as Box } from "@material-ui/core/Box";
 import { withStyles } from "@material-ui/core/styles";
 import FormControl from "@material-ui/core/FormControl";
 import Button from "@material-ui/core/Button";
-import { unstable_Box as Box } from "@material-ui/core/Box";
 import auth from "../services/authService";
-import Input from './common/input';
+import Input from "./common/input";
 
 const styles = theme => ({
   margin: {
@@ -33,21 +33,13 @@ class LoginForm extends Component {
       .regex(/^[_ a-zA-Z0-9]+$/)
       .required()
       .min(3)
-      .error(
-        new Error(
-          "min 3 characters, only _ allowed"
-        )
-      ),
+      .error(new Error("min 3 characters, only _ allowed")),
 
     password: Joi.string()
       .required()
       .regex(/^[_ a-z0-9]+$/)
       .min(3)
-      .error(
-        new Error(
-          "min 3 characters, only _ allowed"
-        )
-      )
+      .error(new Error("min 3 characters, only _ allowed"))
   };
 
   /**
@@ -92,6 +84,10 @@ class LoginForm extends Component {
     this.setState({ data, errors });
   };
 
+  /**
+   * Trigger form submit and start login actions
+   */
+
   handleClick = async e => {
     try {
       const { data } = this.state;
@@ -113,7 +109,7 @@ class LoginForm extends Component {
 
   render() {
     const { classes } = this.props;
-    const { data, errors } = this.state;
+    const { data, errors, hideCancel } = this.state;
     return (
       <div
         style={{
@@ -124,7 +120,6 @@ class LoginForm extends Component {
         }}
       >
         <FormControl className={classes.margin}>
-
           <span style={{ textAlign: "center", fontSize: 25 }}>Sign in</span>
 
           <Box m={2} />
@@ -135,13 +130,13 @@ class LoginForm extends Component {
             type="text"
             value={data.username}
             onChange={this.handleInput}
-            error= {errors.username}
+            error={errors.username}
             helperText={errors.username}
             className={classes.margin}
           />
 
           <Box m={1} />
- 
+
           <Input
             name="password"
             label="Password"
@@ -154,7 +149,7 @@ class LoginForm extends Component {
           />
 
           <Box m={2} />
- 
+
           <Button
             variant="contained"
             color="secondary"
@@ -165,16 +160,18 @@ class LoginForm extends Component {
             Login
           </Button>
 
-          <NavLink
-            to="/"
-            style={{
-              color: "inherit",
-              textDecoration: "none",
-              textAlign: "center"
-            }}
-          >
-            <Button color="secondary">Cancel</Button>
-          </NavLink>
+          {!hideCancel && (
+            <NavLink
+              to="/"
+              style={{
+                color: "inherit",
+                textDecoration: "none",
+                textAlign: "center"
+              }}
+            >
+              <Button color="secondary">Cancel</Button>
+            </NavLink>
+          )}
         </FormControl>
       </div>
     );
